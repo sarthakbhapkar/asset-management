@@ -1,0 +1,5 @@
+.idea/
+/Backend/node_modules/
+/Frontend/node_modules/
+*.Zone.Identifier
+

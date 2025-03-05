@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="User-dashboard.css">
+    <title>User-Dashboard</title>
+</head>
+<body>
+<div id="backdrop"></div>
+<dialog id="Create-Request" class="popup">
+    <h5>Create New Request</h5>
+    <div class="radioBtn">
+        <div>
+            <input type="radio" id="software_Radio" onclick="getUnassignAsset('software','AssetList')">
+            <label for="software_Radio">Software</label>
+        </div>
+        <div>
+            <input type="radio" name="" id="hardware_Radio" onclick="getUnassignAsset('hardware','AssetList')">
+            <label for="hardware_Radio">Hardware</label>
+        </div>
+    </div>
+    <select name="" id="AssetList">
+        <option>Select Asset</option>
+    </select>
+    <span id="requestWarning"></span>
+    <button onclick="sendRequest()">Submit</button>
+    <button onclick="closeModal('Create-Request')">Cancel</button>
+</dialog>
+<dialog id="changeRequest">
+    <h5>Change Request</h5>
+    <div id="parentTypeDiv">
+        <div id="spanDiv">
+            <span>From:</span>
+            <span id="typeNameSpan"></span>
+        </div>
+        <span id="line"></span>
+        <div id="typeDiv">
+            <span>To:</span>
+            <div class="inputDiv">
+                <input type="radio" name="" id="softwareType" onclick="getUnassignAsset('software','selectNewAsset')">
+                <label for="softwareType">Software</label>
+            </div>
+            <div class="inputDiv">
+                <input type="radio" name="" id="hardwareType" onclick="getUnassignAsset('hardware','selectNewAsset')">
+                <label for="hardwareType">Hardware</label>
+            </div>
+        </div>
+    </div>
+    <div class="selectAsset">
+        <span id="assetNameSpan"></span>
+        <label for="selectNewAsset">To:</label>
+        <select name="" id="selectNewAsset">
+            <option>Select Asset</option>
+        </select>
+    </div>
+    <span id="changeMsg"></span>
+    <div>
+        <button id="changeRequestBtn">Change</button>
+        <button onclick="closeModal('changeRequest')">Cancel</button>
+    </div>
+</dialog>
+<dialog id="dialog">
+    <label for="first">FirstName:</label>
+    <input type="text" name="" id="first" aria-placeholder="Enter new name">
+    <label for="last">LastName:</label>
+    <input type="text" name="" id="last" aria-placeholder="Enter new name">
+    <label for="email">Email:</label>
+    <input type="text" name="" id="email" placeholder="Enter new email">
+    <span id="updateProfileWarning"></span>
+    <button onclick="updateProfile('first','last','email','dialog','updateProfileWarning')">Save</button>
+    <button onclick="closeModal('dialog')">Cancel</button>
+</dialog>
+<aside id="sidebar-right">
+    <img src="../../Public/Screenshot%202024-10-25%20125559.png" style="width: 30px" alt=""> USER
+    <ul id='profile-ul'>
+        <li id="edit-li" onclick="openModal('dialog','sidebar-right','backdrop')"><a>EDIT PROFILE</a></li>
+        <li onclick="logout()">LOGOUT</li>
+        <button onclick="closeSideBar('sidebar-right')" style="margin-top: 1em">CLOSE</button>
+    </ul>
+</aside>
+<header>
+    <h3 id="userName">Asset-Management User's Dashboard</h3>
+    <nav class="user-btn">
+        <button onclick="openModal('Create-Request','sidebar-right','backdrop')">Create New Request</button>
+        <button onclick="openSideBar('sidebar-right')">Profile</button>
+    </nav>
+</header>
+<main class="tableDiv">
+    <div class="tableDiv-2">
+        <h5>User's current asset</h5>
+        <table class="table table-bordered" id="userCurrentAsset">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tableDiv-1">
+        <h5>User's asset history</h5>
+        <table class="table table-bordered" id="user_asset_table">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tableDiv-2">
+        <h5>User's Request History</h5>
+        <table class="table table-bordered" id="userRequestHistory">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script type="module" src="User-Dashboard.ts"></script>
+<script type="module" src="common-functions.ts"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+

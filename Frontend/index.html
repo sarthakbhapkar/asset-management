@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script type="module" src="src/Pages/login.ts"></script>
+    <meta charset="UTF-8">
+    <title>Login-Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="backdrop"></div>
+<dialog id="forgot-password">
+    <span>Please enter email to receive password reset link</span>
+    <div>
+        <label for="email1">Email:</label>
+        <input type="email" id="email1" required>
+        <button onclick="sendLink()">Send OTP</button>
+    </div>
+    <div>
+        <label for="otp">OTP:</label>
+        <input type="number" id="otp" required>
+        <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+    <div id="newPassDiv">
+        <label for="newPass">New password: </label>
+        <input type="password" name="" id="newPass"  placeholder="Enter new password" style="color: black">
+        <label for="cnfrmNewPass">Confirm new password: </label>
+        <input type="password" name="" id="cnfrmNewPass" placeholder="Confirm new password">
+    </div>
+    <span id="warning"></span>
+    <div id="btnDiv">
+        <button onclick="updatePassword()">Save</button>
+        <button onclick="closePasswordDialog('forgot-password','backdrop')">CANCEL</button>
+    </div>
+</dialog>
+<main class="mainDiv">
+    <section class="companyDiv">
+        <img src="./Public/company%20logo.png">
+        <h6>Noovosoft's Asset Management App</h6>
+    </section>
+    <span class="divisionLine"></span>
+    <section class="formDiv">
+        <img src="./Public/grp-login-profile.png" alt="">
+        <input type="email" name="" placeholder="Enter your email" id="email" required min="0">
+        <input type="password" name="" placeholder="Enter your password" id="pass" required>
+        <span id="loginWarning" style="color: white"></span>
+        <span onclick="openPasswordDialog('forgot-password','backdrop')" style="color: white" id="forgot-span">Forgot password ??</span>
+        <button class="loginBtn" onclick="validateUser()">LOGIN</button>
+    </section>
+</main>
+
+</body>
+</html>
+

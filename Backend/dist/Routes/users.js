@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const verifyJWT_1 = __importDefault(require("../Middlewares/verifyJWT"));
+const authorizeRole_1 = __importDefault(require("../Middlewares/authorizeRole"));
+const userController_1 = require("../Controllers/userController");
+const router = (0, express_1.Router)();
+router.get('/', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), userController_1.getAllUsers);
+router.get('/current-assets', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), userController_1.getAllUsersCurrentAssets);
+router.get('/assets-history', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), userController_1.getAllUsersAssetHistory);
+router.get('/assets', verifyJWT_1.default, userController_1.getUserCurrentAssets);
+router.put('/delete', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), userController_1.deleteUser);
+router.get('/:id', verifyJWT_1.default, userController_1.getUserById);
+router.post('/', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), userController_1.postUser);
+router.put('/:id', verifyJWT_1.default, userController_1.updateUser);
+router.post('/update-password', userController_1.forgotPassword);
+router.post('/send-mail', userController_1.sendMail);
+router.post('/verify-otp', userController_1.verifyOtp);
+exports.default = router;

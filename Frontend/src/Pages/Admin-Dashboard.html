@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Admin-Dashboard.css">
+    <title>Admin-Dashboard</title>
+</head>
+<body>
+<div id="backdrop"></div>
+
+<dialog id="usersAndAssetsDialog">
+    <button onclick="closeUserAssetDialog('usersAndAssetsDialog')">X</button>
+    <table class="table table-bordered" id="usersAndAssetsTable">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</dialog>
+
+<dialog class="form-popup" id="newUser">
+    <div class="form-container" id="userForm">
+        <h4>Create-User</h4>
+        <hr>
+        <label for="first-name"><b>First-Name: </b></label>
+        <input type="text" placeholder="Enter FirstName" id="first-name" required>
+
+        <label for="last-name"><b>Last-Name: </b></label>
+        <input type="text" placeholder="Enter LastName" id="last-name" required>
+
+        <label for="email1"><b>Email: </b></label>
+        <input type="text" placeholder="Enter Email" id="email1" required>
+
+        <label for="psw"><b>Password: </b></label>
+        <input type="password" placeholder="Enter Password" id="psw" required>
+
+        <label for="psw-repeat"><b>Repeat Password: </b></label>
+        <input type="password" placeholder="Confirm Password" id="psw-repeat" required>
+        <span id="createUserWarning"></span>
+        <div class="userFormBtn">
+            <button type="button" class="signupbtn" id="create" onclick="postUser()">Create</button>
+            <button type="button" class="cancelbtn" onclick="closeModal('newUser','backdrop')">Cancel</button>
+        </div>
+    </div>
+</dialog>
+
+<dialog id="create-Asset" class="popup">
+    <h4>Create-Asset</h4>
+    <select name="" id="createAssetSelect">
+        <option>software</option>
+        <option>hardware</option>
+    </select>
+    <input type="text" name="" placeholder="Enter Asset Name" id="createAssetName" required>
+    <span id="createAssetWarning"></span>
+    <button onclick="createAsset()">Create</button>
+    <button onclick="closeModal('create-Asset','backdrop')">Cancel</button>
+</dialog>
+
+<dialog id="Assign-Asset" class="popup">
+    <h5>Assign-Asset</h5>
+    <select name="" id="userList">
+        <option style="color: black">Select User</option>
+    </select>
+    <div class="radioBtn">
+        <div>
+            <input type="radio" id="softwareRadio" onclick="getUnassignAsset('software','assetList')">
+            <label for="softwareRadio">software</label>
+        </div>
+        <div>
+            <input type="radio" name="" id="hardwareRadio" onclick="getUnassignAsset('hardware','assetList')">
+            <label for="hardwareRadio">hardware</label>
+        </div>
+    </div>
+    <select name="" id="assetList">
+        <option>Select Asset</option>
+    </select>
+    <span id="assignAssetWarning"></span>
+    <button onclick="assignAsset()">Assign</button>
+    <button onclick="closeModal('Assign-Asset','backdrop')">Cancel</button>
+</dialog>
+<dialog id="changeOwner" class="popup">
+    <h5>Change Ownership</h5>
+    <label for="user-list">From:</label>
+    <select name="" id="user-list">
+        <option style="color: black">Select User</option>
+    </select>
+    <div class="radioBtn">
+        <div>
+            <input type="radio" id="softwareRadio2" onclick="getAssignAssetByType('software','user-list','asset-list')">
+            <label for="softwareRadio2">software</label>
+        </div>
+        <div>
+            <input type="radio" name="" id="hardwareRadio2"
+                   onclick="getAssignAssetByType('hardware','user-list','asset-list')">
+            <label for="hardwareRadio2">hardware</label>
+        </div>
+    </div>
+    <select name="" id="asset-list">
+        <option>Select Asset</option>
+    </select>
+    <label for="user-list">To:</label>
+    <select name="" id="user-list2">
+        <option style="color: black">Select User</option>
+    </select>
+    <span id="changeOwnerWarning"></span>
+    <button onclick="ReplaceOwner()">Change</button>
+    <button onclick="closeModal('changeOwner','backdrop')">Cancel</button>
+</dialog>
+<dialog class="popup" id="unAssign-Asset">
+    <h5>unAssign-Asset</h5>
+    <select name="" id="user_list">
+        <option>Select User</option>
+    </select>
+    <div class="radioBtn">
+        <div>
+            <input type="radio" id="softwareRadio1" onclick="getAssignAssetByType('software','user_list','asset_list')">
+            <label for="softwareRadio1">software</label>
+        </div>
+        <div>
+            <input type="radio" name="" id="hardwareRadio1"
+                   onclick="getAssignAssetByType('hardware','user_list','asset_list')">
+            <label for="hardwareRadio1">hardware</label>
+        </div>
+    </div>
+    <select name="" id="asset_list">
+        <option>Select Asset</option>
+    </select>
+    <span id="unassignAssetWarning"></span>
+    <button onclick="unAssignAsset()">unAssign</button>
+    <button onclick="closeModal('unAssign-Asset','backdrop')">Cancel</button>
+</dialog>
+<dialog id="updateProfile">
+    <label for="first">FirstName:</label>
+    <input type="text" name="" id="first" aria-placeholder="Enter new name">
+    <label for="last">LastName:</label>
+    <input type="text" name="" id="last" aria-placeholder="Enter new name">
+    <label for="email">Email:</label>
+    <input type="text" name="" id="email" placeholder="Enter new email">
+    <span id="profileWarning"></span>
+    <button onclick="updateProfile('first','last','email','updateProfile','profileWarning')" id="saveBtn">Save</button>
+    <button onclick="closeModal('updateProfile')">Cancel</button>
+</dialog>
+<dialog id="updateAsset">
+    <label for="asset1">AssetName:</label>
+    <input type="text" name="" id="asset1" aria-placeholder="Enter new name">
+    <div>
+        <button id="updateAssetBtn">Save</button>
+        <button onclick="closeModal('updateAsset')">Cancel</button>
+    </div>
+</dialog>
+<aside id="sidebar-right">
+    <img src="../../Public/Screenshot%202024-10-25%20125559.png" style="width: 30px" alt=""> USER
+    <ul id='profile-ul'>
+        <li id="edit-li" onclick="openModal('updateProfile','sidebar-right','backdrop')"><a>EDIT PROFILE</a></li>
+        <li onclick="logout()">LOGOUT</li>
+        <button onclick="closeSideBar('sidebar-right')" style="margin-top: 1em">CLOSE</button>
+    </ul>
+</aside>
+<aside id="sidebar-left">
+    <h5>Control-Panel</h5>
+    <ul id='profile-ul'>
+        <li onclick="openModal('newUser','sidebar-left','backdrop')">Create-User</li>
+        <li onclick="openModal('create-Asset','sidebar-left','backdrop')">Create-Asset</li>
+        <li onclick="openDialog('Assign-Asset','sidebar-left','backdrop')">Assign-Asset</li>
+        <li onclick="openDialog('unAssign-Asset','sidebar-left','backdrop')">unAssign-Asset</li>
+        <li onclick="openDialog('changeOwner','sidebar-left','backdrop')">Replace Asset Owner</li>
+    </ul>
+    <button onclick="closeSideBar('sidebar-left')" style="margin-top: 1em">CLOSE</button>
+</aside>
+<header>
+    <div id="header-left-div">
+        <img src="../../Public/menu.png" alt="" onclick="openSideBar('sidebar-left')">
+        <h3>Asset-Management Admin Dashboard</h3>
+    </div>
+    <nav class="user-btn">
+        <button onclick="openUserAssetDialog('usersAndAssetsDialog','users')">See All Users</button>
+        <button onclick="openUserAssetDialog('usersAndAssetsDialog','assets')">See All Assets</button>
+        <button onclick="openUserAssetDialog('usersAndAssetsDialog','request')">See All Requests</button>
+        <button onclick="openSideBar('sidebar-right')">Profile</button>
+    </nav>
+</header>
+<main class="tableDiv">
+    <div class="tableDiv-1">
+        <h5>User's Current Asset</h5>
+        <table class="table table-bordered" id="allUserCurrentAssets">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="tableDiv-2">
+        <h5>User's Asset History</h5>
+        <table class="table table-bordered" id="allUserAssetHistory">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="tableDiv-3">
+        <h5>User's Request History</h5>
+        <table class="table table-bordered" id="userRequestHistory">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+<script type="module" src="Admin-Dashboard.ts"></script>
+<script type="module" src="common-functions.ts"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

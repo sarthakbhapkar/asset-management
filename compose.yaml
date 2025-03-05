@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+      - mailhog
+    environment:
+      - MAILHOG_HOST=mailhog
+      - MAILHOG_PORT=1025
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: asset-management
+    volumes:
+      - asset-volume:/var/lib/postgresql/data
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailHog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  asset-volume:

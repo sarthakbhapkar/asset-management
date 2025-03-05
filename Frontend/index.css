@@ -1,0 +1,151 @@
+body {
+    background-image: url("Public/login-bg.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size:100% ;
+}
+
+/*----------------------backdrop-------------------*/
+
+
+#backdrop{
+    position: absolute;
+    display:none;
+    background-color: black;
+    opacity: .75;
+    z-index: 22;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+/*------------------forgot-password------------------------*/
+
+
+#forgot-password{
+    position: absolute;
+    display:none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:start;
+    color: black;
+    top: 30%;
+    width:450px;
+    height: 300px;
+    z-index: 40;
+    background-color:white;
+}
+#newPassDiv{
+    display:none;
+    flex-direction: column;
+}
+
+#forgot-password>div>button{
+    background-color:#007bff;
+    width: 7em;
+    height: 2em;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 0 1px 1px black;
+}
+#forgot-password>div>button:hover{
+    background-color:#0069d9 ;
+}
+
+#forgot-span:hover{
+    cursor: pointer;
+}
+
+
+/*--------------------main-body-----------------------------*/
+
+
+.mainDiv {
+    width: 700px;
+    margin-top: 13%;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.companyDiv {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+}
+.companyDiv>h6{
+    font-weight: 400;
+}
+
+.companyDiv > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.divisionLine {
+    width: 2px;
+    height: 100%;
+    background-color: white;
+}
+
+.formDiv {
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    /*gap: 1em*/
+
+}
+.formDiv > img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 3em;
+}
+.formDiv>button{
+    width: 60%;
+
+}
+.formDiv>input{
+    outline: none;
+    border: none;
+    background-color:transparent;
+    border-bottom: solid 1px white;
+    color: white;
+    opacity: .5;
+    border-radius: 5px;
+
+}
+::placeholder{
+    color: white;
+}
+.formDiv>input:focus{
+    outline: none;
+    border: none;
+    /*text-decoration:underline solid cornflowerblue;*/
+}
+.formDiv>button{
+    width: 70%;
+    background-color:#007bff;
+    color: white;
+    border-radius: 5px;
+    border: 1px black solid;
+    margin-top: .5em;
+}
+.formDiv>button:hover{
+    background-color:#0069d9 ;
+}
+.formDiv>a{
+    color: white;
+    align-self: center;
+    font-size: 13px;
+}

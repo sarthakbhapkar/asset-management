@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const assetController_1 = require("../Controllers/assetController");
+const verifyJWT_1 = __importDefault(require("../Middlewares/verifyJWT"));
+const authorizeRole_1 = __importDefault(require("../Middlewares/authorizeRole"));
+const router = (0, express_1.Router)();
+router.get('/', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.getAllAssets);
+router.get('/unassigned', verifyJWT_1.default, assetController_1.getUnassignedAssets);
+router.get('/:userId', verifyJWT_1.default, assetController_1.getAssetsHistoryByUserId);
+router.post('/', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.postAsset);
+router.put('/:id', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.deleteAsset);
+router.post('/assign-assets', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.assignAsset);
+router.post('/unassign-assets', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.unAssignAsset);
+router.put('/change-asset-owner', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.changeOwner);
+router.put('/update/:id', verifyJWT_1.default, (0, authorizeRole_1.default)(['admin']), assetController_1.updateAsset);
+exports.default = router;

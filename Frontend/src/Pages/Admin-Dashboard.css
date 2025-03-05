@@ -1,0 +1,352 @@
+header{
+    background-color:#1f2a44;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1em;
+    height:10vh;
+    align-items: center;
+}
+#header-left-div>img{
+    width: 30px;
+    height: 30px;
+}
+#header-left-div{
+    display: flex;
+    color: white;
+    gap: 2em;
+    align-items: center;
+}
+.user-btn{
+    display: flex;
+    height:50%;
+    gap: 1em;
+}
+.user-btn>button{
+    background-color:#007bff;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+}
+.user-btn>button:hover{
+    background-color:#0069d9 ;
+}
+
+
+/*------------------------backdrop-----------------------*/
+
+#backdrop{
+    position: absolute;
+    display: none;
+    background-color: black;
+    opacity: .85;
+    width: 100%;
+    height: 100%;
+    z-index:5;
+}
+
+/*----------------------update-asset------------------------*/
+
+#updateAsset{
+    display:none;
+    flex-direction: column;
+    top: 15%;
+    width: 250px;
+    justify-content: space-evenly;
+    height: 250px;
+    box-shadow: 0 1px 4px 1px black;
+    padding: 2em;
+    align-items: center;
+    z-index: 20;
+}
+
+#updateAsset>div>button{
+    background-color:#007bff;
+    color: white;
+    width: 5em;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+}
+#updateAsset>div>button:hover{
+    background-color:#0069d9 ;
+}
+
+
+
+/*-------------------Users/Asset Dialog----------------*/
+
+
+#usersAndAssetsDialog{
+    display:none;
+    flex-direction: column;
+    align-items: end;
+    gap: .5em;
+    width: 100%;
+    min-height:90vh;
+    top:10vh;
+    background-color:white;
+}
+#usersAndAssetsDialog>button{
+    width: 40px;
+    height: 40px;
+    box-shadow:.5px .5px 1px 1px black;
+    font-weight: 700;
+}
+#usersAndAssetsTable{
+    background-color:#cae1ee;
+}
+
+
+
+
+/*--------------------edit profile--dialog---------------------*/
+
+#updateProfile{
+    display:none;
+    flex-direction: column;
+    top: 15%;
+    width: 250px;
+    justify-content: space-evenly;
+    height: 350px;
+    box-shadow: 0 1px 4px 1px black;
+    padding: 2em;
+    align-items: center;
+    z-index: 20;
+}
+
+#updateProfile>input{
+    height: 2em;
+    width: 80%;
+}
+#updateProfile>button{
+    width: 70%;
+    background-color:#007bff;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+    margin-top: .5em;
+}
+#updateProfile>button:hover{
+    background-color:#0069d9;
+}
+
+
+
+/*------------------create-user-dialog--------------------*/
+
+
+.form-popup{
+    background-color:white;
+    border-radius: 10px;
+    display:none;
+    top:10em;
+    width: 250px;
+    min-height: 470px;
+    box-shadow: 2px 2px 1px #000;
+    z-index: 20;
+    font-weight: 200;
+}
+#userForm>input{
+    border: none;
+    /*background-color:  #7296bd;*/
+    border-bottom: solid 2px black;
+   outline: none;
+}
+#userForm>input:focus{
+    border-bottom: #007bff 2px solid;
+    /*background-color:  #7296b;*/
+}
+.userFormBtn{
+    margin-top: 1em;
+   gap: .5em;
+    display: flex;
+
+}
+.userFormBtn>button{
+    flex-grow: 1;
+    background-color:#007bff;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+}
+.userFormBtn>button:hover{
+    background-color:#0069d9 ;
+}
+.form-container>input{
+    border: none;
+}
+
+
+/*---------------------Assign-Asset----------------------*/
+
+
+.popup{
+    display:none;
+    flex-direction: column;
+    background-color:white;
+    top: 15%;
+    width: 250px;
+    justify-content: space-evenly;
+    min-height: 300px;
+    box-shadow: 0 1px 4px 1px black;
+    padding: 1em;
+    align-items:start;
+    border-radius: 10px;
+    z-index: 20;
+}
+
+.popup>select,input{
+    height: 2em;
+    border: 1px solid #007bff;
+    width: 80%;
+}
+.popup>button{
+    width: 70%;
+    background-color:#007bff;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+    margin-top: .5em;
+}
+.popup>button:hover{
+    background-color:#0069d9;
+}
+.radioBtn{
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    flex-direction: column;
+    min-height: 15%;
+}
+.radioBtn>div{
+    display:inline;
+    justify-content:center;
+    align-items: center;
+}
+.radioBtn>div>input{
+    width: 15px;
+    height: 15px;
+}
+
+
+
+
+
+/*---------------------sidebar---------------------*/
+
+
+
+#sidebar-right{
+    position: absolute;
+    display:none;
+    padding-top: 2em;
+    right: 0;
+    top:10vh;
+    background-color:whitesmoke;
+    outline: black 2px solid;
+    width: 200px;
+    min-height:90vh;
+    z-index: 20;
+    border-radius: 3% 0 0 3% ;
+    transition: 1s;
+}
+#sidebar-right>ul>button{
+    width: 70%;
+    background-color:#007bff;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+    margin-top: .5em;
+}
+#sidebar-right>ul>button:hover{
+    background-color:#0069d9 ;
+    /*background-color:red;*/
+}
+#sidebar-right>img{
+    margin-left: 1em;
+    border-radius: 60%;
+}
+#sidebar-right>ul>li{
+    margin-block:1em;
+}
+#sidebar-right>ul>li:hover{
+    cursor:pointer;
+    text-decoration: underline cornflowerblue;
+}
+#user-detail-div{
+    display: none;
+}
+#user-detail-div>input{
+    width: 80%;
+    margin-block:.5em ;
+}
+
+#sidebar-left{
+    position: absolute;
+    display:none;
+    padding-top: 2em;
+    left: 0;
+    margin-top:10vh;
+    background-color:whitesmoke;
+    outline: black 2px solid;
+    width: 200px;
+    min-height: 90vh;
+    z-index: 20;
+    border-radius: 0 3% 3% 0 ;
+    transition: 1s;
+    padding-left: .5em;
+}
+#sidebar-left>ul>li{
+    margin: .5em;
+}
+#sidebar-left>ul>li:hover{
+    cursor:pointer;
+    text-decoration: underline cornflowerblue;
+}
+#sidebar-left>button{
+    width: 70%;
+    background-color:#007bff;
+    color: white;
+    border-radius: 10px;
+    border: 1px black solid;
+    box-shadow: 0 1px 3px 1px black;
+    margin-top: .5em;
+}
+#sidebar-left>button:hover{
+    background-color:#0069d9 ;
+}
+
+
+
+
+
+/*-----------------------------main-body-------------------------------*/
+
+.tableDiv{
+    /*display: flex;*/
+    gap: .5em;
+    padding-inline: .5em;
+    background-color: #cae1ee;
+    margin: 1em;
+
+    border-radius: 10px;
+}
+.tableDiv>div{
+    padding: .2em;
+    border-radius: 10px;
+    color: #333333;
+}
+.tableDiv>div{
+    flex-grow: 1
+}
+.tableDiv-1>h5,.tableDiv-2>h5{
+    color: #1a1a2e;
+}
+table,tbody,tfoot,tr,td,th,thead{
+    outline: black 1px solid;
+}
