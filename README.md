@@ -5,7 +5,7 @@ This is a role-based **Asset Management** system focused on backend development 
 ### 🛠 Tech Stack
 
 - **Backend**: Node.js (Express)
-- **Frontend**: Plain HTML, CSS, JavaScript
+- **Frontend**: Plain HTML, CSS, TypeScript
 - **Database**: PostgreSQL
 - **Authentication**: JWT-based authentication
 - **Authorization**: Role-based access control
